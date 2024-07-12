@@ -30,27 +30,34 @@ import Link from 'next/link'
 // 	)
 // }
 
-const test = () => {
-	const handleClick = () =>{
-		console.log("this is from test")
-	}
+// props ideas with parents and child functions.
+// const test = () => {
+// 	const handleClick = () =>{
+// 		console.log("this is from test")
+// 	}
 
-	return (
-		<div>
-		 <input/>
-		 <Cart chocolate = "kitkat" callMe ={handleClick} />
-		</div>
-	)
-}
+// 	return (
+// 		<div>
+// 		 <input/>
+// 		 <Cart chocolate = "kitkat" callMe ={handleClick} />
+// 		</div>
+// 	)
+// }
 
-const Cart = (props) => {
+// const Cart = (props) => {
+//   return (
+// 	<div>
+// 	 <button onClick={props.callMe}>ClickME</button>
+// 	</div>
+//   )
+// }
+
+
+
+const prac = () => {
   return (
-	<div>
-	 <button onClick={props.callMe}>ClickME</button>
-	</div>
+	<div>page</div>
   )
 }
 
-
-
-export default test
+export default prac
