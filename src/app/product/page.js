@@ -57,16 +57,25 @@ const Cart = (props) => {
 
 //practising state, useState
 const prac = () => {
-	const [num, setName] = useState(10)
-	const addSum = () => {
-		setName(num+1)
+	const [num, setNum] = useState(10)
+	const handleChange = (operation) => {
+		if(operation === 'inc'){
+			setNum(num+1)
+		}
+		else if(operation === 'dec'){
+			if(num === 0){
+				alert("num can't be less than 0")
+			}
+			else{
+				setNum(num-1)
+			}
+		}
 	}
   return (
-	<div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-	  {num}
-      <div>
-        <button onClick={addSum}>Increment</button>
-      </div>
+	<div className='calculator'>
+	    <h2>{num}</h2>
+        <button onClick={()=> handleChange('inc')}>Increment</button>
+        <button onClick={()=> handleChange('dec')}>Decrement</button>
     </div>
   )
 }
