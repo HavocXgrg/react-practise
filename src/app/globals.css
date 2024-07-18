@@ -10,7 +10,7 @@ body, html {
 }
 .calculator {
     text-align: center;
-    background-color: aqua;
+    
 }
 
 .calculator h2 {
@@ -22,5 +22,8 @@ body, html {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: antiquewhite;
+    
+}
+.likeBtn{
+  background-color: rgb(12, 112, 218);
 }

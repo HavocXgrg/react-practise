@@ -1,8 +1,12 @@
 'use client'
 // import { name } from 'ejs'
-import React from 'react'
+import React, { act } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { GrLike } from "react-icons/gr";
+import { LuAngry } from "react-icons/lu";
+import { FiHeart } from "react-icons/fi";
+import { TfiFaceSad } from "react-icons/tfi";
 
 /*
 const page = () => {
@@ -55,29 +59,84 @@ const Cart = (props) => {
 */
 
 
-//practising state, useState
-const prac = () => {
-	const [num, setNum] = useState(10)
-	const handleChange = (operation) => {
-		if(operation === 'inc'){
-			setNum(num+1)
+//practising state, useState. operations
+// const prac = () => {
+// 	const [num, setNum] = useState(10)
+// 	const handleChange = (operation) => {
+// 		if(operation === 'inc'){
+// 			setNum(num+1)
+// 		}
+// 		else if(operation === 'dec'){
+// 			if(num === 0){
+// 				alert("num can't be less than 0")
+// 			}
+// 			else{
+// 				setNum(num-1)
+// 			}
+// 		}
+// 	}
+//   return (
+// 	<div className='calculator'>
+// 	    <h2>{num}</h2>
+//         <button onClick={()=> handleChange('inc')}>Increment</button>
+//         <button onClick={()=> handleChange('dec')}>Decrement</button>
+//     </div>
+//   )
+// }
+
+const reaction = () => { 
+	const [count, setCount] = useState(0)
+	const[reactionOpen, setReactionOpen] = useState(false);
+	const [reactionType, setReactionType] = useState(null)
+
+	const  handleReaction = (action) =>{
+		console.log(reactionType, action);
+		if(reactionType === action){
+			setReactionType('')
+		}else {
+			setReactionType(action)
 		}
-		else if(operation === 'dec'){
-			if(num === 0){
-				alert("num can't be less than 0")
-			}
-			else{
-				setNum(num-1)
-			}
+
+	}
+	const ReactionDiv = () => {
+		return (
+			<div className="reaction">
+				<button  onMouseEnter={()=> setReactionOpen(true)} onClick={()=> handleReaction('like')}><GrLike color='blue'/></button>
+				<button onClick={()=> handleReaction('sad')}><TfiFaceSad color='orange'/></button>
+				<button onClick={()=> handleReaction('angry')}><LuAngry color='red'/></button>
+				<button onClick={()=> handleReaction('love')}><FiHeart color='red'/></button>
+			</div>
+		)
+	}
+	const ReactionBtn = () => {
+		if(reactionType === 'sad'){
+			return(
+				<button onMouseEnter={()=> setReactionOpen(true)}onClick={()=> handleReaction('sad')}><TfiFaceSad color={reactionType && 'orange'}/></button>
+			)
+		}else if(reactionType === "angry"){
+			return(
+				<button  onMouseEnter={()=> setReactionOpen(true)} onClick={()=> handleReaction('angry')}><LuAngry color={reactionType && 'red'}/></button>
+			)
+		} else if(reactionType === "love"){
+			return(
+				<button onMouseEnter={()=> setReactionOpen(true)}onClick={()=> handleReaction('love')}><FiHeart color={reactionType && 'red'}/></button>
+			)
+		}
+		else {
+			return <button  onMouseEnter={()=> setReactionOpen(true)} onClick={()=> handleReaction('like')}><GrLike color={reactionType && 'blue'}/></button>
 		}
 	}
+
   return (
 	<div className='calculator'>
-	    <h2>{num}</h2>
-        <button onClick={()=> handleChange('inc')}>Increment</button>
-        <button onClick={()=> handleChange('dec')}>Decrement</button>
-    </div>
+	  <h2>{reactionType} </h2>
+	  {reactionOpen && <ReactionDiv/>}
+	  {<ReactionBtn/>}
+	  
+	</div>
   )
 }
 
-export default prac
+
+
+export default reaction
