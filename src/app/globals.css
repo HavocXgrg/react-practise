@@ -27,3 +27,18 @@ body, html {
 .likeBtn{
   background-color: rgb(12, 112, 218);
 }
+
+.reactionBtn button {
+  min-height: 2vh;
+  min-width: 2vw;
+  margin: 0.2rem;
+  background-color: rgb(183, 223, 219);
+  border: none;
+}
+.finalReturn button{
+  min-height: 3vh;
+  min-width: 2vw;
+  margin-top: 0.75rem;
+  background-color: rgb(183, 223, 219);
+  border: none;
+}
